@@ -2,8 +2,60 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:danchu/src/color.dart';
 
+class Calendar extends StatefulWidget {
+  const Calendar({Key? key}) : super(key: key);
+
+  @override
+  _CalendarState createState() => _CalendarState();
+}
+
+class _CalendarState extends State<Calendar> {
+  late DateTime _focusedDay;
+  late DateTime _selectedDay;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusedDay = DateTime.now();
+    _selectedDay = DateTime.now();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //calendar
+    return Scaffold(
+      backgroundColor: AppColors.danchuYellow,
+      body: Stack(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(6.0),
+            child: TableCalendar(
+              firstDay: DateTime.utc(2010, 10, 16),
+              lastDay: DateTime.utc(2030, 3, 14),
+              focusedDay: _focusedDay,
+              selectedDayPredicate: (day) {
+                return isSameDay(_selectedDay, day);
+              },
+              onDaySelected: (selectedDay, focusedDay) {
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
+                });
+              },
+              calendarStyle: CalendarStyles.calendarStyle,
+              headerStyle: CalendarStyles.headerStyle,
+              calendarBuilders: CalendarStyles.calendarBuilders,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class CalendarStyles {
   static CalendarStyle get calendarStyle => CalendarStyle(
+        //calendar style
         selectedDecoration: BoxDecoration(
           color: AppColors.deepYellow,
           shape: BoxShape.circle,
@@ -19,11 +71,13 @@ class CalendarStyles {
       );
 
   static HeaderStyle get headerStyle => HeaderStyle(
-        formatButtonVisible: false,
         titleCentered: true,
+        formatButtonVisible: false,
         titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       );
+
   static CalendarBuilders get calendarBuilders => CalendarBuilders(
+        //주말 색변경
         dowBuilder: (context, day) {
           if (day.weekday == DateTime.sunday) {
             return Center(
