@@ -5,7 +5,8 @@ import 'package:danchu/calendar/calendar_page.dart';
 import 'diary.dart';
 import 'saveforlater/setting.dart';
 import 'saveforlater/profile.dart';
-import 'report.dart';
+import 'setting/report.dart';
+import 'calendar/friend.dart'; //friend 확인용
 
 class NavigationExample extends StatefulWidget {
   const NavigationExample({super.key});

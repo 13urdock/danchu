@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class DiaryApp extends StatefulWidget {
   const DiaryApp({super.key});
 

@@ -1,7 +1,12 @@
+// 07.31 10:24 기준
+// 설정 - 문의사항 화면 
+// push 아직 안 함
+// 연결 되어있는 곳 없음
+
+import 'package:danchu/src/color.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'calendar/calendar_style.dart';
 
 
 class ContactPage extends StatefulWidget {
@@ -59,7 +64,7 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Future<void> _sendDataToServer() async {
-    final url = Uri.parse('https://your-api-endpoint.com/contact');
+    final url = Uri.parse('https://your-api-endpoint.com/contact'); // 문의사항 받을 링크 수정 필요
     final response = await http.post(
       url,
       headers: <String, String>{
@@ -124,10 +129,10 @@ class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CalendarStyles.background,  // 여기에 배경색을 지정합니다.
+      backgroundColor: AppColors.danchuYellow,  // 여기에 배경색을 지정합니다.
       appBar: AppBar(
         title: Text('문의화면'),
-        backgroundColor: CalendarStyles.background,
+        backgroundColor: AppColors.danchuYellow,
       ),
       body: SingleChildScrollView(
         child: Padding(
