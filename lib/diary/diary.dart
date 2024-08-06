@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'diary_writing.dart';
+import 'diary_writingAI.dart';
+
+void main() async {
+  runApp(const DiaryApp());
+}
 
 class DiaryApp extends StatefulWidget {
   const DiaryApp({super.key});
@@ -28,7 +34,7 @@ class _DiaryPageState extends State<DiaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text(''),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -46,7 +52,93 @@ class _DiaryPageState extends State<DiaryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: SizedBox(), // content of diary
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFD74A),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 16,
+                        top: 16,
+                        child: Text(
+                          'AI 요약 \n\n\n\n\n\n\n\n\n 일기',
+                          style: TextStyle(fontSize: 12, color: Colors.black),
+                        ),
+                      ),
+                      Positioned(
+                        left: 24,
+                        right: 24,
+                        top: 44,
+                        child: GestureDetector(
+                          // 추가됨
+                          onTap: () {
+                            // 추가됨
+                            Navigator.push(
+                              // 추가됨
+                              context, // 추가됨
+                              MaterialPageRoute(
+                                  builder: (context) => DiaryPage2()), // 추가됨
+                            ); // 추가됨
+                          }, // 추가됨
+                          child: Container(
+                            height: 110,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '내용', // 수정됨
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 24,
+                        right: 24,
+                        bottom: -10,
+                        child: GestureDetector(
+                          // 추가됨
+                          onTap: () {
+                            // 추가됨
+                            Navigator.push(
+                              // 추가됨
+                              context, // 추가됨
+                              MaterialPageRoute(
+                                  builder: (context) => DiaryPage1()), // 추가됨
+                            ); // 추가됨
+                          }, // 추가됨
+                          child: Container(
+                            height: 270,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '내용', // 수정됨
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           );
@@ -73,12 +165,12 @@ class CirclePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blue // 원하는 색상으로 변경 가능
+      ..color = Colors.blue
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(
-      Offset(size.width / 2, size.height / 2),
-      size.width / 2,
+      Offset(size.width / 2, size.height / 3),
+      size.width / 3,
       paint,
     );
   }

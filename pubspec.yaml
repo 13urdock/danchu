@@ -1,10 +1,10 @@
 name: danchu
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.4 <4.0.0'
+  sdk: ">=3.4.4 <4.0.0"
 
 dependencies:
   flutter:
@@ -15,8 +15,6 @@ dependencies:
   table_calendar: ^3.1.2
   draggable_home: ^1.0.2
 
-  
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,4 +22,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter:
+ src:
+  - src/logo3D.png
 

@@ -18,7 +18,8 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( // 헤더
+      appBar: AppBar(
+        // 헤더
         title: Text('새 할 일 추가'),
       ),
       body: Padding(
@@ -30,14 +31,15 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
               controller: _titleController,
               decoration: InputDecoration(labelText: '제목'),
             ),
-            TextField(              controller: _descriptionController,
+            TextField(
+              controller: _descriptionController,
               decoration: InputDecoration(labelText: '설명'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              child: Text(_selectedDate == null 
-                ? '날짜 선택' 
-                : '${_selectedDate!.year}/${_selectedDate!.month}/${_selectedDate!.day}'),
+              child: Text(_selectedDate == null
+                  ? '날짜 선택'
+                  : '${_selectedDate!.year}/${_selectedDate!.month}/${_selectedDate!.day}'),
               onPressed: () async {
                 final pickedDate = await showDatePicker(
                   context: context,
@@ -72,7 +74,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                 );
               },
               child: CustomCircleIcon(
-                isSelected: true,  // 또는 상태에 따라 true/false
+                isSelected: true, // 또는 상태에 따라 true/false
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -88,12 +90,11 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                       );
                     },
                   );
-                },  // CustomCircleIcon 내부의 onPressed는 비워둡니다.
-                color: Colors.blue,  // 원하는 색상으로 설정
-                size: 24,  // 원하는 크기로 설정
+                }, // CustomCircleIcon 내부의 onPressed는 비워둡니다.
+                color: Colors.blue, // 원하는 색상으로 설정
+                size: 24, // 원하는 크기로 설정
               ),
             ),
-            
           ],
         ),
       ),
